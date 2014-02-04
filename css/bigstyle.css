@@ -1,0 +1,17 @@
+.tab {
+  float: left;
+  width: 30%;
+  padding: 1.11%;
+}
+
+.status {
+  height: 1em;
+}
+
+.inhibit {
+  height: 1em;
+}
+
+.date {
+  height: 1em;
+}
