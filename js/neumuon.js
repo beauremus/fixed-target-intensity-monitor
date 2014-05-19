@@ -212,11 +212,11 @@ NeuMuon.isCdcGood = function(xml)
 		$(xml).find("reply").each(function ()
 		{
 			var $device = $(this).find("request").attr("device");
-			var $value = $(this).find("value");
+			var $value = $(this).find("value").text();
 			
 			if ($device == "F:NEUCDC")
 			{
-				if (parseInt($value.text()) == 8255) //8255 = good value & 10435 is tripped value
+				if ($value == "true")
 				{
 					$("#tabs-2 .inhibit .cdc").empty();
 					boolean = true;

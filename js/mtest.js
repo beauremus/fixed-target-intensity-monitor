@@ -94,24 +94,18 @@ MTest.parseXML = function(xml)
 			}
 			else if ($device == "F:MT6AB1")
 			{
+				var $value = $(this).find("value").text();
+
 				if (parseInt($("#tabs-1 .status .energy").text()) <= 32)
-				{
-					$(this).find("field").each(function()
+				{						
+					if ($value == "true")
+					{										
+						$("#tabs-1 .status .mode").html(" " + "LE Muons");
+					}
+					else
 					{
-						$fieldName = $(this).attr('name');
-						
-						if ($fieldName == "on")
-						{										
-							if ($(this).text() == "true")
-							{
-								$("#tabs-1 .status .mode").html(" " + "LE Muons");
-							}
-							else
-							{
-								$("#tabs-1 .status .mode").html(" " + "LE Pions");
-							}
-						}
-					});
+						$("#tabs-1 .status .mode").html(" " + "LE Pions");
+					}
 				}
 				else if (parseInt($("#tabs-1 .status .energy").text()) == 120)
 				{
@@ -119,22 +113,14 @@ MTest.parseXML = function(xml)
 				}
 				else if (parseInt($("#tabs-1 .status .energy").text()) > 32)
 				{
-					$(this).find("field").each(function()
+					if ($value == "true")
 					{
-						$fieldName = $(this).attr('name');
-						
-						if ($fieldName == "on")
-						{
-							if ($(this).text() == "true")
-							{
-								$("#tabs-1 .status .mode").html(" " + "Muons");
-							}
-							else
-							{
-								$("#tabs-1 .status .mode").html(" " + "Pions");
-							}
-						}
-					});
+						$("#tabs-1 .status .mode").html(" " + "Muons");
+					}
+					else
+					{
+						$("#tabs-1 .status .mode").html(" " + "Pions");
+					}
 				}
 			}
 		});	
@@ -255,11 +241,11 @@ MTest.isCdcGood = function(xml)
 		$(xml).find("reply").each(function ()
 		{
 			var $device = $(this).find("request").attr("device");
-			var $value = $(this).find("value");
+			var $value = $(this).find("value").text();
 			
 			if ($device == "F:MTPCDC")
 			{
-				if (parseInt($value.text()) == 8253) //8253 = good value & 8387 is tripped value
+				if ($value == "true")
 				{
 					$("#tabs-1 .inhibit .cdc").empty();
 					boolean = true;

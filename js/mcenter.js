@@ -252,11 +252,11 @@ MCenter.isCdcGood = function(xml)
 		$(xml).find("reply").each(function ()
 		{
 			var $device = $(this).find("request").attr("device");
-			var $value = $(this).find("value");
+			var $value = $(this).find("value").text();
 			
 			if ($device == "F:MCCDC")
 			{
-				if (parseInt($value.text()) == 8241) //8241 = good value & 9283 is tripped value
+				if ($value == "true")
 				{
 					$("#tabs-3 .inhibit .cdc").empty();
 					boolean = true;
