@@ -168,7 +168,7 @@ MTest.isDataNew = function(xml)
 			{
 				if (lastValue != value)
 				{
-					if (parseInt(value) > 101)
+					if (parseInt(value) > 116)
 					{
 						isNew = true;
 					}
