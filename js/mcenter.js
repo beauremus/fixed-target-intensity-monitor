@@ -24,7 +24,7 @@ MCenter.parseXML = function(xml)
 			var dateString = Date.parse($(this).attr('time').split("T")[0]).toString("M/dd/yy");
 			var timeString = $(this).attr('time').split("T")[1].split(".")[0];
 			
-			if ($device == "F:MC6SC")
+			if ($device == "F:MC7SC1")
 			{
 				if (MCenter.isSwitchGood(xml))
 				{
@@ -85,55 +85,6 @@ MCenter.parseXML = function(xml)
 					}
 				}
 			}
-			else if ($device == "S:SYNRG")
-			{
-				$("#tabs-3 .status .energy").html(" " + $value.text() + " " + "GeV");
-			}
-			else if ($device == "F:MT6AB1")
-			{
-				if (parseInt($("#tabs-3 .status .energy").text()) <= 32)
-				{
-					$(this).find("field").each(function()
-					{
-						$fieldName = $(this).attr('name');
-						
-						if ($fieldName == "on")
-						{										
-							if ($(this).text() == "true")
-							{
-								$("#tabs-3 .status .mode").html(" " + "LE Muons");
-							}
-							else
-							{
-								$("#tabs-3 .status .mode").html(" " + "LE Pions");
-							}
-						}
-					});
-				}
-				else if (parseInt($("#tabs-3 .status .energy").text()) == 120)
-				{
-					$("#tabs-3 .status .mode").html(" " + "Protons");
-				}
-				else if (parseInt($("#tabs-3 .status .energy").text()) > 32)
-				{
-					$(this).find("field").each(function()
-					{
-						$fieldName = $(this).attr('name');
-						
-						if ($fieldName == "on")
-						{
-							if ($(this).text() == "true")
-							{
-								$("#tabs-3 .status .mode").html(" " + "Muons");
-							}
-							else
-							{
-								$("#tabs-3 .status .mode").html(" " + "Pions");
-							}
-						}
-					});
-				}
-			}
 		});	
 	}
 }
@@ -154,7 +105,7 @@ MCenter.isDataNew = function(xml)
 			var $device = $(this).find("request").attr("device");
 			var $value = $(this).find("value");
 			
-			if ($device == "F:MC6SC")
+			if ($device == "F:MC7SC1")
 			{
 				lastValue = $value.text();
 				lastDateString = Date.parse($(this).attr('time').split("T")[0]).toString("M/dd/yy") + " " + $(this).attr('time').split("T")[1].split(".")[0];
@@ -166,7 +117,7 @@ MCenter.isDataNew = function(xml)
 			var $device = $(this).find("request").attr("device");
 			var $value = $(this).find("value");
 									
-			if ($device == "F:MC6SC")
+			if ($device == "F:MC7SC1")
 			{
 				value = $value.text();
 				dateString = Date.parse($(this).attr('time').split("T")[0]).toString("M/dd/yy") + " " + $(this).attr('time').split("T")[1].split(".")[0];
