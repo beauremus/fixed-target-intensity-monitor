@@ -85,6 +85,11 @@ MCenter.parseXML = function(xml)
 					}
 				}
 			}
+			else if ($device == "F:MCENRG")
+			{
+				var NRG = parseFloat($value.text()).toFixed();
+				$("#tabs-3 .status .energy").html(" " + NRG + " " + "GeV");
+			}
 		});	
 	}
 }
