@@ -60,6 +60,7 @@ MTest.parseXML = function(xml)
 								timeString,
 								"</br>"
 							);
+							$("#tabs-1 .renewable_" + MTest.bufferIndex).empty()
 							
 							$("#tabs-1 .renewable_" + MTest.bufferIndex).append(reply.join(""));
 							
