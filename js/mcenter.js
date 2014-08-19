@@ -88,7 +88,14 @@ MCenter.parseXML = function(xml)
 			else if ($device == "F:MCENRG")
 			{
 				var NRG = parseFloat($value.text()).toFixed();
-				$("#tabs-3 .status .energy").html(" " + NRG + " " + "GeV");
+				if (typeof NRG === "number" && !isNaN(NRG))
+				{
+					$("#tabs-3 .status .energy").html(" " + NRG + " " + "GeV");
+				}
+				else
+				{
+					$("#tabs-3 .status .energy").empty();
+				}
 			}
 		});	
 	}
