@@ -67,6 +67,8 @@ NeuMuon.parseXML = function(xml)
 									"</br>"
 								);
 
+								$("#tabs-2 .renewable_" + NeuMuon.bufferIndex).empty();
+
 								$("#tabs-2 .renewable_" + NeuMuon.bufferIndex).append(reply.join(""));
 								
 								NeuMuon.bufferIndex++;

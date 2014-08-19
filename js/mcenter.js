@@ -16,6 +16,8 @@ MCenter.parseXML = function(xml)
 			MCenter.bufferIndex = 9;
 			this.incrementRenew();
 		}
+
+		$("#tabs-3 .renewable_" + NeuMuon.bufferIndex).empty()
 		
 		$(xml).find("reply").each(function()
 		{
