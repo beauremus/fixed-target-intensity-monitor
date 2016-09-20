@@ -6,7 +6,7 @@ function init(result) {
     let reply = result['data-set'].reply
 
     for (var i = 0; i < reply.length; i++) {
-        let logDateTime = new Date(reply.time),
+        let logDateTime = new Date(reply[i].time),
             logTime = timeFromDate(logDateTime)
 
         if ($('#container').children().length >= 10) { // 10 readings on page already
