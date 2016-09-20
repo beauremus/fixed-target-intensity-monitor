@@ -1,6 +1,33 @@
 <!DOCTYPE html>
 <title>Fixed Target Intensity Monitor</title>
-<div id="container"></div>
+<link rel="stylesheet" href="css/style.css">
+<div class="containers">
+    <table>
+        <thead>
+            <tr><th colspan="3">F:MT6SC1</th></tr>
+            <tr><th>Intensity</th><th></th><th>Time</th></tr>
+        </thead>
+        <tbody id="container1"></tbody>
+    </table>
+</div>
+<div class="containers">
+    <table>
+        <thead>
+            <tr><th colspan="3">F:MIPP</th></tr>
+            <tr><th>Intensity</th><th></th><th>Time</th></tr>
+        </thead>
+        <tbody id="container2"></tbody>
+    </table>
+</div>
+<div class="containers">
+    <table>
+        <thead>
+            <tr><th colspan="3">F:NMBEAM</th></tr>
+            <tr><th>Intensity</th><th></th><th>Time</th></tr>
+        </thead>
+        <tbody id="container3"></tbody>
+    </table>
+</div>
 <script src="js/jquery.min.js"></script>
 <script src="http://www-bd.fnal.gov/acnet/proto_lib.js"></script>
 <script src="http://www-bd.fnal.gov/acnet/dpm_protocol.js"></script>

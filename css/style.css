@@ -1,0 +1,66 @@
+@media (max-width: 640px) {
+    body {
+        font-size: 1.2rem;
+    }
+}
+
+@media (min-width: 640px) {
+    body {
+        font-size: 1rem;
+    }
+}
+
+@media (min-width:960px) {
+    body {
+        font-size: 1.2rem;
+    }
+}
+
+@media (min-width:1100px) {
+    body {
+        font-size: 1.5rem;
+    }
+}
+
+@-webkit-keyframes invalid {
+    from { background-color: gray; }
+    to { background-color: inherit; }
+}
+
+@-moz-keyframes invalid {
+    from { background-color: gray; }
+    to { background-color: inherit; }
+}
+@-o-keyframes invalid {
+    from { background-color: gray; }
+    to { background-color: inherit; }
+}
+@keyframes invalid {
+    from { background-color: gray; }
+    to { background-color: inherit; }
+}
+
+.new {
+  -webkit-animation: invalid 1s 1; /* Safari 4+ */
+  -moz-animation:    invalid 1s 1; /* Fx 5+ */
+  -o-animation:      invalid 1s 1; /* Opera 12+ */
+  animation:         invalid 1s 1; /* IE 10+ */
+}
+
+tr td:nth-child(1) {
+   text-align: right;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+table td {
+    padding: 3px;
+}
+
+.containers {
+    width: 33%;
+    display: table-cell;
+    padding: 10px 30px;
+}
