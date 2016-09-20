@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    loggerGet(["F:MT6SC1"], "10minago", "now", init)
+    loggerGet(["F:MTEST"], "10minago", "now", init)
 })
 
 function init(result) {
@@ -13,7 +13,7 @@ function init(result) {
             $('#container tr:first-child').remove() // remove first reading
         }
 
-        $('#container').append(`<tr><td>${reply[i].value.content}</td><td>@</td><td>${logTime}</td></tr>`)
+        $('#container1').append(`<tr class="new"><td>${reply[i].value.content}</td><td>@</td><td>${logTime}</td></tr>`)
     }
 
     liveGet()
@@ -25,24 +25,20 @@ function print(obj,info) {
         return false
     }
 
-    console.log(obj.timestamp)
-
     let dateTime = new Date(obj.timestamp),
         time = timeFromDate(dateTime)
 
-    console.log("dateTime: ",dateTime," time: ",time)
-
-    if ($('#container').children().length >= 10) { // 10 readings on page already
-        $('#container tr:first-child').remove() // remove first reading
+    if ($('#container1').children().length >= 10) { // 10 readings on page already
+        $('#container1 tr:first-child').remove() // remove first reading
     }
 
-    $('#container').append(`<tr><td>${obj.data}</td><td>@</td><td>${time}</td></tr>`) // append new reading
+    $('#container1').append(`<tr class="new"><td>${obj.data}</td><td>@</td><td>${time}</td></tr>`) // append new reading
 }
 
 function liveGet() {
     let dpm = new DPM()
 
-    dpm.addRequest("F:MT6SC1@E,37",print)
+    dpm.addRequest("F:MTEST@E,37",print)
 
     dpm.start()
 }
