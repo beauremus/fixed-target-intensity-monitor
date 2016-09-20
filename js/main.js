@@ -1,7 +1,23 @@
 $(document).ready(function(){
-    loggerGet(["F:MT6SC1"], "10minago", "now", print)
-    liveGet()
+    loggerGet(["F:MT6SC1"], "10minago", "now", init)
 })
+
+function init(result) {
+    let reply = result['data-set'].reply
+
+    for (var i = 0; i < reply.length; i++) {
+        let logDateTime = new Date(reply.time),
+            logTime = timeFromDate(logDateTime)
+
+        if ($('#container').children().length >= 10) { // 10 readings on page already
+            $('#container div:first-child').remove() // remove first reading
+        }
+
+        $('#container').append(`<div>${reply[i].value.content} @ ${logTime}</div>`)
+    }
+
+    liveGet()
+}
 
 function print(obj,info) {
     if (typeof(obj.data) === 'undefined') {
@@ -22,7 +38,7 @@ function print(obj,info) {
 function liveGet() {
     let dpm = new DPM()
 
-    dpm.addRequest("F:MT6SC1@E,36",print)
+    dpm.addRequest("F:MT6SC1@E,37",print)
 
     dpm.start()
 }
