@@ -27,7 +27,7 @@ function print(obj,info) {
 
     console.log(obj.timestamp)
 
-    let dateTime = new Date(1000*obj.timestamp),
+    let dateTime = new Date(obj.timestamp),
         time = timeFromDate(dateTime)
 
     console.log("dateTime: ",dateTime," time: ",time)
