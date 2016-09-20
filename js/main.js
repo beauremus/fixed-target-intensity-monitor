@@ -25,8 +25,12 @@ function print(obj,info) {
         return false
     }
 
+    console.log(obj.timestamp)
+
     let dateTime = new Date(1000*obj.timestamp),
         time = timeFromDate(dateTime)
+
+    console.log("dateTime: ",dateTime," time: ",time)
 
     if ($('#container').children().length >= 10) { // 10 readings on page already
         $('#container div:first-child').remove() // remove first reading
