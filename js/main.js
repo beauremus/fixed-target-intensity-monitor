@@ -10,10 +10,10 @@ function init(result) {
             logTime = timeFromDate(logDateTime)
 
         if ($('#container').children().length >= 10) { // 10 readings on page already
-            $('#container div:first-child').remove() // remove first reading
+            $('#container tr:first-child').remove() // remove first reading
         }
 
-        $('#container').append(`<div>${reply[i].value.content} @ ${logTime}</div>`)
+        $('#container').append(`<tr><td>${reply[i].value.content}</td><td>@</td><td>${logTime}</td></tr>`)
     }
 
     liveGet()
@@ -33,10 +33,10 @@ function print(obj,info) {
     console.log("dateTime: ",dateTime," time: ",time)
 
     if ($('#container').children().length >= 10) { // 10 readings on page already
-        $('#container div:first-child').remove() // remove first reading
+        $('#container tr:first-child').remove() // remove first reading
     }
 
-    $('#container').append(`<div>${obj.data} @ ${time}</div>`) // append new reading
+    $('#container').append(`<tr><td>${obj.data}</td><td>@</td><td>${time}</td></tr>`) // append new reading
 }
 
 function liveGet() {
