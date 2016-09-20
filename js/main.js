@@ -28,9 +28,9 @@ function liveGet() {
 }
 
 function timeFromDate(date) {
-    let hour = date.getHours(),
-        min = date.getMinutes(),
-        sec = date.getSeconds()
+    let hour = date.getHours() < 10 ? '0'+date.getHours() : date.getHours(),
+        min = date.getMinutes() < 10 ? '0'+date.getMinutes() : date.getMinutes(),
+        sec = date.getSeconds() < 10 ? '0'+date.getSeconds() : date.getSeconds()
 
     return hour+':'+min+':'+sec
 }
