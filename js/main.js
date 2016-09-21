@@ -18,8 +18,6 @@ function print(obj,info) {
         return false
     }
 
-    console.log("result: ",obj)
-
     let reply = obj['data-set'] === undefined ? [] : obj['data-set'].reply
 
     if (reply.length > 0) {
