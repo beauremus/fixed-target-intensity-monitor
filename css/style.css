@@ -1,0 +1,62 @@
+body {
+    font-size: 1.2rem;
+    font-family: 'Courier New', Courier, monospace;
+    background-color: black;
+    color: rgb(0,255,0);
+}
+
+@-webkit-keyframes invalid {
+    from { background-color: gray; }
+    to { background-color: inherit; }
+}
+
+@-moz-keyframes invalid {
+    from { background-color: gray; }
+    to { background-color: inherit; }
+}
+@-o-keyframes invalid {
+    from { background-color: gray; }
+    to { background-color: inherit; }
+}
+@keyframes invalid {
+    from { background-color: gray; }
+    to { background-color: inherit; }
+}
+
+.new {
+  -webkit-animation: invalid 1s 1; /* Safari 4+ */
+  -moz-animation:    invalid 1s 1; /* Fx 5+ */
+  -o-animation:      invalid 1s 1; /* Opera 12+ */
+  animation:         invalid 1s 1; /* IE 10+ */
+}
+
+tr td:nth-child(1) {
+   text-align: right;
+   color: rgb(0,255,0);
+}
+
+tr td:nth-child(2) {
+    color: white;
+}
+
+tr td:nth-child(3) {
+    color: cyan;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+table td {
+    padding: 3px;
+}
+
+th {
+    color: white;
+}
+
+.containers {
+    width: 33%;
+    display: table-cell;
+    padding: 10px 30px;
+}

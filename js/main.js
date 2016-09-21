@@ -1,48 +1,72 @@
+const INTS = ["F:MTEST","F:MIPP","F:NMBEAM"] // intensity devices
+const ROWS = 10
+let count = 1 // count not index, shouldn't be 0
+
 $(document).ready(function(){
-    loggerGet(["F:MT6SC1"], "10minago", "now", init)
+    loggerGet(INTS, "10minago", "now", init)
 })
 
 function init(result) {
-    let reply = result['data-set'].reply
+    print(result)
 
-    for (var i = 0; i < reply.length; i++) {
-        let logDateTime = new Date(reply[i].time),
-            logTime = timeFromDate(logDateTime)
-
-        if ($('#container').children().length >= 10) { // 10 readings on page already
-            $('#container div:first-child').remove() // remove first reading
-        }
-
-        $('#container').append(`<div>${reply[i].value.content} @ ${logTime}</div>`)
-    }
-
-    liveGet()
+    count === INTS.length ? getLive() : count++
 }
 
 function print(obj,info) {
-    if (typeof(obj.data) === 'undefined') {
-        console.log("ERROR: data undefined")
+    if (typeof(obj) != 'object') { // obj.data === undefined ||
+        console.log("ERROR: unexpected data type")
         return false
     }
 
-    console.log(obj.timestamp)
+    console.log("result: ",obj)
 
-    let dateTime = new Date(obj.timestamp),
-        time = timeFromDate(dateTime)
+    let reply = obj['data-set'] === undefined ? [] : obj['data-set'].reply
 
-    console.log("dateTime: ",dateTime," time: ",time)
-
-    if ($('#container').children().length >= 10) { // 10 readings on page already
-        $('#container div:first-child').remove() // remove first reading
+    if (reply.length > 0) {
+        printLogger(reply)
+    } else {
+        printLive(obj,info)
     }
-
-    $('#container').append(`<div>${obj.data} @ ${time}</div>`) // append new reading
 }
 
-function liveGet() {
+function printLogger(reply) {
+    for (var i = 0; i < reply.length; i++) {
+        let dateTime = new Date(reply[i].time),
+            intsIndex = INTS.indexOf(reply[i].request.device),
+            $container = $('#container'+intsIndex)
+
+        removeFirst($container)
+
+        appendNew($container,reply[i].value.content,timeFromDate(dateTime))
+    }
+}
+
+function printLive(obj,info) {
+    let dateTime = new Date(obj.timestamp),
+        intsIndex = INTS.indexOf(info.name),
+        $container = $('#container'+intsIndex)
+
+    removeFirst($container)
+
+    appendNew($container,obj.data,timeFromDate(dateTime))
+}
+
+function removeFirst(container) {
+    if (container.children().length >= ROWS) { // 10 readings on page already
+        container.find('tr').first().remove() // remove first reading
+    }
+}
+
+function appendNew(container,intensity,time) {
+    container.append(`<tr class="new"><td>${intensity}</td><td>@</td><td>${time}</td></tr>`) // append new reading
+}
+
+function getLive() {
     let dpm = new DPM()
 
-    dpm.addRequest("F:MT6SC1@E,37",print)
+    for (var i = 0; i < INTS.length; i++) {
+        dpm.addRequest(INTS[i]+'@E,37',print)
+    }
 
     dpm.start()
 }
